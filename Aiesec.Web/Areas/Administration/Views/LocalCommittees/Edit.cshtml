@@ -1,0 +1,269 @@
+﻿@model Aiesec.Model.Response.Administration.LocalCommittee
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = _sharedLocalizer.NewLocalCommittee;
+}
+@section styles {
+    <link href="~/assets/css/pages/wizard/wizard-2.css" rel="stylesheet" type="text/css">
+}
+
+<div class="card card-custom">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-4 subheader-transparent" id="kt_subheader">
+        <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Details-->
+            <div class="d-flex align-items-center flex-wrap mr-2">
+                <!--begin::Title-->
+                <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">@_sharedLocalizer.EditLocalCommittee</h5>
+                <!--end::Title-->
+                <!--begin::Separator-->
+                <div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-5 bg-gray-200"></div>
+                <!--end::Separator-->
+                <!--begin::Search Form-->
+                <div class="d-flex align-items-center" id="kt_subheader_search">
+                    <span class="text-dark-50 font-weight-bold" id="kt_subheader_total">@_sharedLocalizer.EnterDetailsAndSubmit</span>
+                </div>
+                <!--end::Search Form-->
+            </div>
+            <!--end::Details-->
+            <!--begin::Toolbar-->
+            <div class="d-flex align-items-center">
+                <!--begin::Button-->
+                <a href="javascript:history.go(-1)" class="btn btn-default font-weight-bold btn-sm px-3 font-size-base">@_sharedLocalizer.Back</a>
+                <!--end::Button-->
+            </div>
+            <!--end::Toolbar-->
+        </div>
+    </div>
+    <div class="card-body p-0">
+        <!--begin: Wizard-->
+        <div class="wizard wizard-2" id="kt_wizard_v2" data-wizard-state="first" data-wizard-clickable="false">
+            <!--begin: Wizard Nav-->
+            <div class="wizard-nav border-right py-8 px-8 py-lg-20 px-lg-10">
+                <!--begin::Wizard Step 1 Nav-->
+                <div class="wizard-steps">
+                    <div class="wizard-step" data-wizard-type="step" data-wizard-state="current">
+                        <div class="wizard-wrapper">
+                            <div class="wizard-icon">
+                                <span class="svg-icon svg-icon-primary svg-icon-2x">
+                                    <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo6\dist/../src/media/svg/icons\Home\Building.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                            <rect x="0" y="0" width="24" height="24" />
+                                            <path d="M13.5,21 L13.5,18 C13.5,17.4477153 13.0522847,17 12.5,17 L11.5,17 C10.9477153,17 10.5,17.4477153 10.5,18 L10.5,21 L5,21 L5,4 C5,2.8954305 5.8954305,2 7,2 L17,2 C18.1045695,2 19,2.8954305 19,4 L19,21 L13.5,21 Z M9,4 C8.44771525,4 8,4.44771525 8,5 L8,6 C8,6.55228475 8.44771525,7 9,7 L10,7 C10.5522847,7 11,6.55228475 11,6 L11,5 C11,4.44771525 10.5522847,4 10,4 L9,4 Z M14,4 C13.4477153,4 13,4.44771525 13,5 L13,6 C13,6.55228475 13.4477153,7 14,7 L15,7 C15.5522847,7 16,6.55228475 16,6 L16,5 C16,4.44771525 15.5522847,4 15,4 L14,4 Z M9,8 C8.44771525,8 8,8.44771525 8,9 L8,10 C8,10.5522847 8.44771525,11 9,11 L10,11 C10.5522847,11 11,10.5522847 11,10 L11,9 C11,8.44771525 10.5522847,8 10,8 L9,8 Z M9,12 C8.44771525,12 8,12.4477153 8,13 L8,14 C8,14.5522847 8.44771525,15 9,15 L10,15 C10.5522847,15 11,14.5522847 11,14 L11,13 C11,12.4477153 10.5522847,12 10,12 L9,12 Z M14,12 C13.4477153,12 13,12.4477153 13,13 L13,14 C13,14.5522847 13.4477153,15 14,15 L15,15 C15.5522847,15 16,14.5522847 16,14 L16,13 C16,12.4477153 15.5522847,12 15,12 L14,12 Z" fill="#000000" />
+                                            <rect fill="#FFFFFF" x="13" y="8" width="3" height="3" rx="1" />
+                                            <path d="M4,21 L20,21 C20.5522847,21 21,21.4477153 21,22 L21,22.4 C21,22.7313708 20.7313708,23 20.4,23 L3.6,23 C3.26862915,23 3,22.7313708 3,22.4 L3,22 C3,21.4477153 3.44771525,21 4,21 Z" fill="#000000" opacity="0.3" />
+                                        </g>
+                                    </svg><!--end::Svg Icon-->
+                                </span>
+                            </div>
+                            <div class="wizard-label">
+                                <h3 class="wizard-title">@_sharedLocalizer.LocalCommitteeSettings</h3>
+                                <div class="wizard-desc">@_sharedLocalizer.SetupLocalCommitteeSettings</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end::Wizard Step 1 Nav-->
+                    <!--begin::Wizard Step 2 Nav-->
+                    <div class="wizard-step" data-wizard-type="step" data-wizard-state="pending">
+                        <div class="wizard-wrapper">
+                            <div class="wizard-icon">
+                                <span class="svg-icon svg-icon-2x">
+                                    <!--begin::Svg Icon | path:assets/media/svg/icons/General/Like.svg-->
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                            <rect x="0" y="0" width="24" height="24"></rect>
+                                            <path d="M9,10 L9,19 L10.1525987,19.3841996 C11.3761964,19.7920655 12.6575468,20 13.9473319,20 L17.5405883,20 C18.9706314,20 20.2018758,18.990621 20.4823303,17.5883484 L21.231529,13.8423552 C21.5564648,12.217676 20.5028146,10.6372006 18.8781353,10.3122648 C18.6189212,10.260422 18.353992,10.2430672 18.0902299,10.2606513 L14.5,10.5 L14.8641964,6.49383981 C14.9326895,5.74041495 14.3774427,5.07411874 13.6240179,5.00562558 C13.5827848,5.00187712 13.5414031,5 13.5,5 L13.5,5 C12.5694044,5 11.7070439,5.48826024 11.2282564,6.28623939 L9,10 Z" fill="#000000"></path>
+                                            <rect fill="#000000" opacity="0.3" x="2" y="9" width="5" height="11" rx="1"></rect>
+                                        </g>
+                                    </svg>
+                                    <!--end::Svg Icon-->
+                                </span>
+                            </div>
+                            <div class="wizard-label">
+                                <h3 class="wizard-title">@_sharedLocalizer.Completed</h3>
+                                <div class="wizard-desc">@_sharedLocalizer.ReviewAndSubmit</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end::Wizard Step 6 Nav-->
+                </div>
+            </div>
+            <!--end: Wizard Nav-->
+            <!--begin: Wizard Body-->
+            <div class="wizard-body py-8 px-8 py-lg-20 px-lg-10">
+                <!--begin: Wizard Form-->
+                <div class="row">
+                    <div class="offset-xxl-2 col-xxl-8">
+                        <form asp-area="Administration" asp-controller="LocalCommittees" asp-action="Update" class="form fv-plugins-bootstrap fv-plugins-framework" id="kt_form">
+                            <!--begin: Wizard Step 1-->
+                            <div class="pb-5" data-wizard-type="step-content" data-wizard-state="current">
+                                <h4 class="mb-10 font-weight-bold text-dark">@_sharedLocalizer.EnterLCInfo</h4>
+                                <!--begin::EncryptedId-->
+                                <input hidden="hidden" name="encryptedId" asp-for="EncryptedId"/>
+                                <!--end::EncryptedID-->
+                                <!--begin::Input-->
+                                <div class="form-group fv-plugins-icon-container">
+                                    <label>@_sharedLocalizer.DateOfEstablishment</label>
+                                    <input type="text" class="form-control form-control-solid form-control-lg" name="establishmentDate" value="@Model.EstablishmentDate.ToString(_sharedLocalizer.DateFormat)" autocomplete="off">
+                                    <span class="form-text text-muted">@_sharedLocalizer.EnterEstablishmentDate</span>
+                                    <div class="fv-plugins-message-container"></div>
+                                </div>
+                                <!--end::Input-->
+                                <!--begin::Input-->
+                                <div class="form-group fv-plugins-icon-container">
+                                    <label>@_sharedLocalizer.DateOfEstablishment</label>
+                                    <select class="form-control form-control-lg form-control-solid" name="cityId" asp-items="@(await _selectList.Cities())" asp-for="CityId"></select>
+                                    <span class="form-text text-muted">@_sharedLocalizer.ChooseCity</span>
+                                    <div class="fv-plugins-message-container"></div>
+                                </div>
+                                <!--end::Input-->
+                            </div>
+                            <!--end: Wizard Step 1-->
+                            <!--begin: Wizard Step 2-->
+                            <div class="pb-5" data-wizard-type="step-content">
+                                <!--begin::Section-->
+                                <h4 class="mb-10 font-weight-bold text-dark">@_sharedLocalizer.ReviewAndSubmit</h4>
+                                <h6 class="font-weight-bolder mb-3">@_sharedLocalizer.LocalCommitteeInfo</h6>
+                                <div class="text-dark-50 line-height-lg">
+                                    <div><b>@_sharedLocalizer.DateOfEstablishment:&nbsp;</b></div><div id="establishmentDate"></div>
+                                </div>
+                                <!--end::Section-->
+                            </div>
+                            <!--end: Wizard Step 2-->
+                            <!--begin: Wizard Actions-->
+                            <div class="d-flex justify-content-between border-top mt-5 pt-10">
+                                <div class="mr-2">
+                                    <button class="btn btn-light-primary font-weight-bold text-uppercase px-9 py-4" data-wizard-type="action-prev">@_sharedLocalizer.Previous</button>
+                                </div>
+                                <div>
+                                    <button class="btn btn-success font-weight-bold text-uppercase px-9 py-4" data-wizard-type="action-submit">@_sharedLocalizer.Submit</button>
+                                    <button class="btn btn-primary font-weight-bold text-uppercase px-9 py-4" data-wizard-type="action-next">@_sharedLocalizer.Next</button>
+                                </div>
+                            </div>
+                            <!--end: Wizard Actions-->
+                            <div></div><div></div><div></div><div></div><div></div>
+                        </form>
+                    </div>
+                    <!--end: Wizard-->
+                </div>
+            </div>
+            <!--end: Wizard Body-->
+        </div>
+        <!--end: Wizard-->
+    </div>
+</div>
+
+@section scripts {
+
+    <script>
+        "use strict";
+
+        // Class definition
+        var KTWizard2 = function () {
+            // Base elements
+            var _wizardEl;
+            var _formEl;
+            var _wizard;
+            var _validations = [];
+
+            // Private functions
+            var initWizard = function () {
+                // Initialize form wizard
+                _wizard = new KTWizard(_wizardEl, {
+                    startStep: 1, // initial active step number
+                    clickableSteps: false // to make steps clickable this set value true and add data-wizard-clickable="true" in HTML for class="wizard" element
+                });
+
+                // Validation before going to next page
+                _wizard.on('beforeNext', function (wizard) {
+                    _validations[wizard.getStep() - 1].validate().then(function (status) {
+                        if (status == 'Valid') {
+                            populateDetails();
+                            _wizard.goNext();
+                            KTUtil.scrollTop();
+                        } else {
+                            Swal.fire({
+                                html: "@_validationErrors.SorryTryAgain",
+                                icon: "error",
+                                buttonsStyling: false,
+                                confirmButtonText: "@_sharedLocalizer.Ok",
+                                customClass: {
+                                    confirmButton: "btn font-weight-bold btn-light"
+                                }
+                            }).then(function () {
+                                KTUtil.scrollTop();
+                            });
+                        }
+                    });
+
+                    _wizard.stop();  // Don't go to the next step
+                });
+
+                // Change event
+                _wizard.on('change', function (wizard) {
+                    KTUtil.scrollTop();
+                });
+            }
+
+            var populateDetails = function () {
+                $("#establishmentDate").text($("input[name='establishmentDate']").val());
+            }
+
+            var initInputGroups = function () {
+                $("input[name='establishmentDate']").datepicker({
+                    changeYear: "true",
+                    changeMonth: "true",
+                    dateFormat: "@_sharedLocalizer.DatePickerFormat"
+                });
+            }
+
+            var initValidation = function () {
+                // Init form validation rules. For more info check the FormValidation plugin's official documentation:https://formvalidation.io/
+                // Step 1
+                _validations.push(FormValidation.formValidation(
+                    _formEl,
+                    {
+                       fields: {
+                            establishmentDate: {
+                                validators: {
+                                    notEmpty: {
+                                        message: "@_validationErrors.ErrNoEstablishmentDate"
+                                    }
+                                }
+                            },
+                            cityId: {
+                                validators: {
+                                    notEmpty: {
+                                        message: "@_validationErrors.ErrNoEstablishmentDate"
+                                    }
+                                }
+                            }
+                        },
+                        plugins: {
+                            trigger: new FormValidation.plugins.Trigger(),
+                            bootstrap: new FormValidation.plugins.Bootstrap()
+                        }
+                    }
+                ));
+
+            }
+
+            return {
+                // public functions
+                init: function () {
+                    _wizardEl = KTUtil.getById('kt_wizard_v2');
+                    _formEl = KTUtil.getById('kt_form');
+
+                    initWizard();
+                    initInputGroups();
+                    initValidation();
+                }
+            };
+        }();
+
+        jQuery(document).ready(function () {
+            KTWizard2.init();
+        });
+
+    </script>
+} 

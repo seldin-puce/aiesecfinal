@@ -1,0 +1,254 @@
+﻿@model Aiesec.Model.Response.Administration.UserProfileViewModel
+@{
+    Layout = null;
+}
+
+<form id="update-user-form" ajax-modal-form-edit="modal-lg" method="post" action="@Settings.Routes.User.UpdateUser" asp-antiforgery="true">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">@_sharedLocalizer.Update</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        <div class="kt-portlet kt-portlet--tabs">
+            <div class="kt-portlet__head">
+                <div class="kt-portlet__head-toolbar">
+                    <ul class="nav nav-tabs nav-tabs-space-xl nav-tabs-line nav-tabs-bold nav-tabs-line-3x nav-tabs-line-brand" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#kt-user-account-edit" role="tab" aria-selected="false">
+                                <i class="fa fa-user-cog"></i> @_sharedLocalizer.AccountSettings
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#kt-user-profile-edit" role="tab" aria-selected="false">
+                                <i class="fa fa-user-tag"></i> @_sharedLocalizer.ProfileSettings
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="kt-portlet__body">
+                <div class="tab-content">
+                    <div class="tab-pane active" id="kt-user-account-edit" role="tabpanel">
+                        <div class="kt-form kt-form--label-right">
+                            <div class="kt-form__body">
+                                <div class="kt-section kt-section--first">
+                                    <div class="kt-section__body">
+                                        <input class="form-control" type="text" name="EncryptedId" asp-for="OldEncryptedId" hidden="hidden" />
+                                        <div class="form-group col-md-12">
+                                            <label for="updateUserFormUsername">@_sharedLocalizer.UserName</label>
+                                            <input id="updateUserFormUsername" name="user.userName" class="form-control" type="text" placeholder="@_sharedLocalizer.UserName" asp-for="User.UserName" autocomplete=“off”>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label for="updateUserFormEmail">@_sharedLocalizer.Email</label>
+                                            <input id="updateUserFormEmail" name="user.email" type="email" class="form-control" placeholder="@_sharedLocalizer.Email" asp-for="User.Email" autocomplete=“off”>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label for="updateUserFormPhoneNumber">@_sharedLocalizer.PhoneNumber</label>
+                                            <input id="updateUserFormPhoneNumber" name="user.phoneNumber" type="number" class="form-control" placeholder="@_sharedLocalizer.PhoneNumber" asp-for="User.PhoneNumber" autocomplete=“off”>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label>@_sharedLocalizer.Settings</label>
+                                            <div class="col-lg-9 col-xl-6">
+                                                <div class="kt-checkbox-inline">
+                                                    <label class="kt-checkbox">
+                                                        <input type="checkbox" name="user.TwoFactorEnabled" value="true" asp-for="User.TwoFactorEnabled"> @_sharedLocalizer.TwoFactorEnabled
+                                                        <span></span>
+                                                    </label>
+                                                    <label class="kt-checkbox">
+                                                        <input type="checkbox" name="user.ChangePassword" value="true" asp-for="User.ChangePassword"> @_sharedLocalizer.ChangePassword
+                                                        <span></span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group form-group-last row">
+                                            <label></label>
+                                            <div class="col-lg-9 col-xl-6 col-lg-offset-3">
+                                                <div class="kt-checkbox-inline">
+                                                    @if (Model.User.EmailConfirmed)
+                                                    {
+                                                        <span class="kt-badge kt-badge--inline kt-badge--success">@_sharedLocalizer.EmailConfirmed</span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span class="kt-badge kt-badge--inline kt-badge--danger">@_sharedLocalizer.EmailNotConfirmed</span>
+                                                    }
+                                                    @if (Model.User.PhoneNumberConfirmed)
+                                                    {
+                                                        <span class="kt-badge kt-badge--inline kt-badge--success">@_sharedLocalizer.PhoneNumberConfirmed</span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span class="kt-badge kt-badge--inline kt-badge--danger">@_sharedLocalizer.PhoneNumberNotConfirmed</span>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="kt-user-profile-edit" role="tabpanel">
+                        <div class="kt-form kt-form--label-right">
+                            <div class="kt-form__body">
+                                <div class="kt-section kt-section--first">
+                                    <div class="kt-section__body">
+                                        <div class="form-group col-md-12">
+                                            <label for="updateUserFormPhoneNumber">@_sharedLocalizer.FirstName</label>
+                                            <input id="updateUserFormFirstname" name="profile.firstname" class="form-control" type="text" placeholder="@_sharedLocalizer.FirstName" asp-for="Profile.FirstName" autocomplete=“off”>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label for="updateUserFormLastname">@_sharedLocalizer.LastName</label>
+                                            <input id="updateUserFormLastname" name="profile.lastname" class="form-control" placeholder="@_sharedLocalizer.LastName" asp-for="Profile.LastName" autocomplete=“off”>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label for="updateUserFormBirthdate">@_sharedLocalizer.Birthdate</label>
+                                            <div class="input-daterange input-group">
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text"><i class="la la-calendar"></i></span>
+                                                </div>
+                                                <input id="updateUserFormBirthdate" name="profile.birthdate" type="text" class="form-control kt-input" value="@Model.Profile.Birthdate.ToString(_sharedLocalizer.DateFormat)" autocomplete=“off”>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label for="updateUserFormGender">@_sharedLocalizer.Gender</label>
+                                            <select id="updateUserFormGender" for="profile.gender" name="profile.gender" asp-items="@(await _selectList.Genders())" asp-for="Profile.Gender" class="form-control kt-select2"></select>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label for="updateUserFormAdress">@_sharedLocalizer.Address</label>
+                                            <input id="updateUserFormAdress" name="profile.address" class="form-control" type="text" asp-for="Profile.Address" />
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label for="updateUserFormCity">@_sharedLocalizer.City</label>
+                                            <select id="updateUserFormCity" name="profile.cityId" asp-items="@(await _selectList.Cities())" asp-for="Profile.CityId" class="form-control kt-select2"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="la la-close"></i>@_sharedLocalizer.Close</button>
+        <button type="submit" class="btn btn-primary"><i class="la la-save"></i>@_sharedLocalizer.SaveChanges</button>
+    </div>
+</form>
+
+<script src="~/assets/js/PasswordFunctions.js"></script>
+
+<script>
+    var Events = {
+        GeneratePassword: function () {
+            $('#generate-password').on('click', function (e) {
+                e.preventDefault();
+                let generatedPassword = Password.Generate();
+                $('input[name=\'NewPassword\']').val(generatedPassword);
+                $('input[name=\'ConfirmNewPassword\']').val(generatedPassword);
+            });
+        },
+        ViewPassword: function () {
+            $('#view-password').on('click', function (e) {
+                e.preventDefault();
+                $(this).find("i").toggleClass("fa-eye fa-eye-slash");
+                $('input[name=\'NewPassword\']').attr('type',
+                    $(this).is(function () { return $('input[name=\'NewPassword\']').attr('type') == 'password' })
+                        ? 'text'
+                        : 'password');
+            });
+        },
+        init: function () {
+            this.GeneratePassword();
+            this.ViewPassword();
+        }
+    }
+
+    $(document).ready(function () {
+        Events.init();
+    });
+
+    $("#updateUserFormBirthdate").datepicker({
+        changeYear: "true",
+        changeMonth: "true",
+        dateFormat: "@_sharedLocalizer.DatePickerFormat",
+        beforeShow: function () {
+           setTimeout(function () {
+               $('.ui-datepicker').css('z-index', 99999999999999);
+           }, 0);
+        }
+    });
+
+    $("#update-user-form").validate({
+        rules: {
+            "user.userName": {
+                required: true,
+                regex: "[a-z]{3,}_[a-z]{3,}"
+            },
+            "user.email": {
+                required: true,
+                email: true
+            },
+            "user.phoneNumber": {
+                required: true,
+                regex: "^\\d{9,10}$"
+            },
+            "profile.firstname": {
+                required: true,
+                regex: "^[a-zA-Z]+$"
+            },
+            "profile.lastname": {
+                required: true,
+                regex: "^[a-zA-Z]+$"
+            },
+            "profile.birthdate": {
+                required: true
+            },
+            "profile.gender": {
+                required: true
+            },
+            "profile.address": {
+                required: true
+            },
+            "profile.cityId": {
+                required: true
+            }
+        },
+        messages: {
+            "user.userName": {
+                required: "@_validationErrors.ErrNoUsername",
+                regex: "@_validationErrors.ErrUsernamePolicy"
+            },
+            "user.email": {
+                required: "@_validationErrors.ErrNoEmail",
+                email: "@_validationErrors.EmailWrongFormat"
+            },
+            "user.phoneNumber": {
+                required: "@_validationErrors.ErrNoPhoneNumber",
+                regex: "@_validationErrors.ErrTypePhoneNumber"
+            },
+            "profile.firstname": {
+                required: "@_validationErrors.ErrNoFirstName",
+                regex: "@_validationErrors.ErrFirstName"
+            },
+            "profile.lastname": {
+                required: "@_validationErrors.ErrNoLastName",
+                regex: "@_validationErrors.ErrLastName"
+            },
+            "profile.birthdate": {
+                required: "@_validationErrors.ErrNoBirthDate"
+            },
+            "profile.gender": {
+                required: "@_validationErrors.ErrNoGender"
+            },
+            "profile.address": {
+                required: "@_validationErrors.ErrNoAddress"
+            },
+            "profile.cityId": {
+                required: "@_validationErrors.ErrNoCity"
+            }
+        }
+    });
+</script>

@@ -1,0 +1,63 @@
+﻿@model Aiesec.Model.Response.Administration.LocalCommittee
+@{
+    Layout = null;
+}
+
+<div class="modal-body">
+    <!--end::Card header-->
+    <!--begin::Card body-->
+    <div class="card-body px-0">
+        <form class="form" id="kt_form">
+            <div class="tab-content">
+                <!--begin::Tab-->
+                <div class="tab-pane show px-7 active" id="kt_user_edit_tab_1" role="tabpanel">
+                    <!--begin::Row-->
+                    <div class="row">
+                        <div class="col-12">
+                            <!--begin::Row-->
+                            <div class="row">
+                                <div class="col-12">
+                                    <h6 class="text-dark font-weight-bold mb-10 text-center">@_sharedLocalizer.LocalCommitteeInfo</h6>
+                                </div>
+                            </div>
+                            <!--end::Row-->
+                            <!--begin::Group-->
+                            <div class="form-group row">
+                                <div class="col-6">
+                                    <label class="col-form-label col-12 text-left">@_sharedLocalizer.City</label>
+                                    <div class="col-12">
+                                        <input class="form-control form-control-lg form-control-solid" asp-for="City.Name" disabled="disabled">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <label class="col-form-label col-12 text-left">@_sharedLocalizer.DateOfEstablishment</label>
+                                    <div class="col-12">
+                                        <input class="form-control form-control-lg form-control-solid" type="text" value="@Model.EstablishmentDate.ToString(_sharedLocalizer.DateFormat)" disabled="disabled">
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end::Group-->
+                            <!--begin::Group-->
+                            <div class="form-group row">
+                                <div class="col-6">
+                                    <label class="col-form-label col-12 text-left">@_sharedLocalizer.NumberOfTeams</label>
+                                    <div class="col-12">
+                                        <input class="form-control form-control-lg form-control-solid" type="text" asp-for="NumberOfTeams" disabled="disabled">
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end::Group-->
+                        </div>
+                    </div>
+                    <!--end::Row-->
+                </div>
+                <!--end::Tab-->
+            </div>
+        </form>
+    </div>
+    <!--begin::Card body-->
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="la la-close"></i>@_sharedLocalizer.Close</button>
+    @* <a class="btn btn-label-brand btn-bold" href="@Settings.Routes.User.Update/@Model.OldEncryptedId" ajax-add="modal-lg"><i class="la la-edit"></i>@_sharedLocalizer.Update</a>*@
+</div>

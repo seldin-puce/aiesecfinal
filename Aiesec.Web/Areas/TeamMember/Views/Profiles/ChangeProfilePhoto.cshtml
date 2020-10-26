@@ -1,0 +1,59 @@
+﻿@{
+    ViewData["Title"] = "View";
+}
+
+<div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">@_sharedLocalizer.Update</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+</div>
+<div class="modal-body">
+    <div class="kt-portlet kt-portlet--tabs">
+        <div class="kt-portlet__head">
+            <div class="kt-portlet__head-toolbar">
+                <ul class="nav nav-tabs nav-tabs-space-xl nav-tabs-line nav-tabs-bold nav-tabs-line-3x nav-tabs-line-brand" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#kt-user-details-account" role="tab" aria-selected="false">
+                            <i class="la la-camera"></i> @_sharedLocalizer.ChangeProfilePhoto
+                        </a>
+                </ul>
+            </div>
+        </div>
+        <div class="kt-portlet__body">
+            <div class="tab-content">
+                <div class="tab-pane active" id="kt-user-details-account" role="tabpanel">
+                    <div class="kt-form kt-form--label-right">
+                        <div class="kt-form__body">
+                            <div class="kt-section kt-section--first">
+                                <div class="kt-section__body">
+                                    <input value="@ViewBag.ProfileId" hidden="hidden" />
+                                    <div class="croppie-wrapper" id="editProfilePhotoWrapper">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="la la-close"></i>@_sharedLocalizer.Close</button>
+    @* <a class="btn btn-label-brand btn-bold" href="@Settings.Routes.User.Update/@Model.OldEncryptedId" ajax-add="modal-lg"><i class="la la-edit"></i>@_sharedLocalizer.Update</a>*@
+</div>
+<script>
+    $(function () {
+        var basic = $("#editProfilePhotoWrapper").croppie({
+            viewport: {
+                width: 150,
+                height: 200
+            }
+        });
+        basic.croppie('bind', {
+            url: 'https://i.imgur.com/xD9rzSt.jpg',
+            points: [77, 469, 280, 739]
+        });
+    });
+
+</script>

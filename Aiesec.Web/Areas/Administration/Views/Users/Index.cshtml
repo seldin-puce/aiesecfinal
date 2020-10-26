@@ -1,0 +1,357 @@
+@model Aiesec.Web.ViewModels.DataTable<Aiesec.Model.Response.Administration.UserProfileViewModel>
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = _sharedLocalizer.UsersSettings;
+}
+@section styles{
+    <link href="~/assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+}
+
+<div class="card card-custom">
+    <div class="card-header">
+        <div class="card-title">
+            <span class="card-icon">
+                <span class="svg-icon svg-icon-primary svg-icon-2x">
+                    <span class="svg-icon svg-icon-primary svg-icon-2x">
+                        <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo6\dist/../src/media/svg/icons\General\User.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <polygon points="0 0 24 0 24 24 0 24" />
+                                <path d="M12,11 C9.790861,11 8,9.209139 8,7 C8,4.790861 9.790861,3 12,3 C14.209139,3 16,4.790861 16,7 C16,9.209139 14.209139,11 12,11 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" />
+                                <path d="M3.00065168,20.1992055 C3.38825852,15.4265159 7.26191235,13 11.9833413,13 C16.7712164,13 20.7048837,15.2931929 20.9979143,20.2 C21.0095879,20.3954741 20.9979143,21 20.2466999,21 C16.541124,21 11.0347247,21 3.72750223,21 C3.47671215,21 2.97953825,20.45918 3.00065168,20.1992055 Z" fill="#000000" fill-rule="nonzero" />
+                            </g>
+                        </svg><!--end::Svg Icon-->
+                    </span>
+                </span>
+            </span>
+            <h3 class="card-label">@_sharedLocalizer.Users</h3>
+        </div>
+        <div class="card-toolbar">
+            <!--begin::Button-->
+            <a href="@Settings.Routes.User.Insert" class="btn btn-primary font-weight-bolder">
+                <span class="svg-icon svg-icon-md">
+                    <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Flatten.svg-->
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <rect x="0" y="0" width="24" height="24"></rect>
+                            <circle fill="#000000" cx="9" cy="15" r="6"></circle>
+                            <path d="M8.8012943,7.00241953 C9.83837775,5.20768121 11.7781543,4 14,4 C17.3137085,4 20,6.6862915 20,10 C20,12.2218457 18.7923188,14.1616223 16.9975805,15.1987057 C16.9991904,15.1326658 17,15.0664274 17,15 C17,10.581722 13.418278,7 9,7 C8.93357256,7 8.86733422,7.00080962 8.8012943,7.00241953 Z" fill="#000000" opacity="0.3"></path>
+                        </g>
+                    </svg>
+                    <!--end::Svg Icon-->
+                </span>@_sharedLocalizer.NewUser
+            </a>
+            <!--end::Button-->
+        </div>
+    </div>
+    <div class="card-body">
+        <!--begin: Search Form-->
+        <form id="search-paremeters">
+            <div class="row mb-8">
+                <div class="col-lg-3 kt-margin-b-10-tablet-and-mobile">
+                    <label>@_sharedLocalizer.UserName:</label>
+                    <input name="username" type="text" class="form-control kt-input" placeholder="@_sharedLocalizer.UserName" data-col-index="0" autocomplete=“off”>
+                </div>
+                <div class="col-lg-3 kt-margin-b-10-tablet-and-mobile">
+                    <label>@_sharedLocalizer.Email:</label>
+                    <input name="email" type="text" class="form-control kt-input" placeholder="@_sharedLocalizer.Email" data-col-index="1" autocomplete=“off”>
+                </div>
+                <div class="col-lg-3 kt-margin-b-10-tablet-and-mobile">
+                    <label>@_sharedLocalizer.PhoneNumber:</label>
+                    <input name="phoneNumber" type="text" class="form-control kt-input" placeholder="@_sharedLocalizer.PhoneNumber" data-col-index="4" autocomplete=“off”>
+                </div>
+                <div class="col-lg-3 kt-margin-b-10-tablet-and-mobile">
+                    <label>@_sharedLocalizer.RegistrationDate:</label>
+                    <div class="input-daterange input-group" id="kt_datepicker">
+                        <input id="search-datePickerFrom" name="dateFrom" type="text" class="form-control kt-input" placeholder="From" autocomplete=“off”>
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="la la-calendar"></i></span>
+                        </div>
+                        <input id="search-datePickerTo" name="dateTo" type="text" class="form-control kt-input" placeholder="To" autocomplete=“off”>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-8">
+                <div class="col-lg-3 kt-margin-b-10-tablet-and-mobile">
+                    <div class="form-group">
+                        <label>@_sharedLocalizer.Active</label>
+                        <div class="radio-inline">
+                            <label class="radio radio-primary">
+                                <input type="radio" checked="checked" name="active" value="" />@_sharedLocalizer.All
+                                <span></span>
+                            </label>
+                            <label class="radio radio-success">
+                                <input type="radio" name="active" value="1"> @_sharedLocalizer.Active
+                                <span></span>
+                            </label>
+                            <label class="radio radio-danger">
+                                <input type="radio" name="active" value="0"> @_sharedLocalizer.Inactive
+                                <span></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-8">
+                <div class="col-lg-12">
+                    <button id="datatable-search" title="@_dataTableLocalizer.SearchTitle" class="btn btn-primary btn-brand--icon">
+                        <span>
+                            <i class="la la-search"></i>
+                            <span>@_sharedLocalizer.Search</span>
+                        </span>
+                    </button>
+                    &nbsp;&nbsp;
+                    <button id="datatable-reset" title="@_dataTableLocalizer.ResetTitle" class="btn btn-secondary btn-secondary--icon">
+                        <span>
+                            <i class="la la-close"></i>
+                            <span>@_sharedLocalizer.Reset</span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </form>
+        <div class="dataTables_wrapper dt-bootstrap4">
+            <div class="row">
+                <div class="col-sm-12">
+                    <table class="table table-bordered table-hover table-checkable dataTable dtr-inline collapsed invisible" id="datatable" role="grid" aria-describedby="kt_datatable_info">
+                        <thead>
+                            <tr class="text-center align-middle" role="row">
+                                <th></th>
+                                <th>@_sharedLocalizer.UserName</th>
+                                <th>@_sharedLocalizer.FirstName</th>
+                                <th>@_sharedLocalizer.Email</th>
+                                <th>@_sharedLocalizer.PhoneNumber</th>
+                                <th>@_sharedLocalizer.RegistrationDate</th>
+                                <th>@_sharedLocalizer.Active</th>
+                                <th>@_sharedLocalizer.Actions</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr class="text-center align-middle">
+                                <th></th>
+                                <th>@_sharedLocalizer.UserName</th>
+                                <th>@_sharedLocalizer.FirstName</th>
+                                <th>@_sharedLocalizer.Email</th>
+                                <th>@_sharedLocalizer.PhoneNumber</th>
+                                <th>@_sharedLocalizer.RegistrationDate</th>
+                                <th>@_sharedLocalizer.Active</th>
+                                <th>@_sharedLocalizer.Actions</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            @foreach (var item in Model.data)
+                            {
+                                <tr class="text-center align-middle">
+                                    <td>@item.User.EncryptedId</td>
+                                    <td>@item.User.UserName</td>
+                                    <td>@item.Profile.FirstName</td>
+                                    <td>@item.User.Email</td>
+                                    <td>@item.User.PhoneNumber</td>
+                                    <td>@item.User.CreatedDate.ToString(_sharedLocalizer.DateFormat)</td>
+                                    <td>@item.User.Active</td>
+                                    <td></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!--end: Datatable-->
+        </div>
+    </div>
+</div>
+<!--end: Datatable -->
+@section Scripts
+{
+    <script src="~/assets/plugins/custom/datatables/datatables.min.js"></script>
+    <script>
+         var DataTable = {
+                Init: function () {
+                    var datatable = $("#datatable");
+                    datatable.DataTable({
+                        rowId: 'user.encryptedId',
+                        processing: true,
+                        serverSide: true,
+                        deferLoading: '@Model.recordsTotal',
+                        deferRender: true,
+                        searching: false,
+                        responsive: true,
+                        autoWidth: true,
+                        orderMulti: false,
+                        orderCellsTop: true,
+                        pagingType: "full_numbers",
+                        lengthMenu: [10, 15, 25, 50],
+                        initComplete: function () {
+                            datatable.removeClass("invisible").css({ opacity: 0.0, visibility: "visible" }).animate({ opacity: 1 }, 250);
+                        },
+                        language: {
+                            lengthMenu: '_MENU_',
+                            info: `@_dataTableLocalizer.Showing @_dataTableLocalizer.From  _START_ @_dataTableLocalizer.To _END_ @_dataTableLocalizer.Of _TOTAL_ @_dataTableLocalizer.Entries`,
+                            paginate: {
+                                first: `@_dataTableLocalizer.First`,
+                                last: `@_dataTableLocalizer.Last`,
+                                next: `@_dataTableLocalizer.NextPage`,
+                                previous: `@_dataTableLocalizer.PreviousPage`
+                            },
+                            processing: `<div class="spinner spinner-sm spinner-success spinner-right">@_sharedLocalizer.Loading</div>`
+                        },
+                        ajax: {
+                            url: "@Url.Action("GetData", "Users")",
+                            type: "POST",
+                            dataType: "json",
+                            data: function (data) {
+                                data.searchParams = {
+                                    user: $("#search-paremeters").serializeObject(),
+                                    profile: null
+                                };
+                                return data;
+                            },
+                            headers: { 'RequestVerificationToken': gettoken() }
+                        },
+                        columns: [
+                            {
+                                data: "user.encryptedId",
+                                targets: 0,
+                                visible: false
+                            },
+                            {
+                                data: "user.userName",
+                                targets: 1,
+                                name: "@nameof(Aiesec.Model.Response.Administration.User.UserName)",
+                                className: "text-center align-middle",
+                            },
+                            {
+                                data: "profile.firstName",
+                                targets: 2,
+                                name: "@nameof(Aiesec.Model.Response.Administration.Profile.FirstName)",
+                                className: "text-center align-middle",
+                            },
+                            {
+                                data: "user.email",
+                                targets: 3,
+                                name: "@nameof(Aiesec.Model.Response.Administration.User.Email)",
+                                className: "text-center align-middle",
+                            },
+                            {
+                                data: "user.phoneNumber",
+                                targets: 4,
+                                name: "@nameof(Aiesec.Model.Response.Administration.User.PhoneNumber)",
+                                className: "text-center align-middle",
+                                orderable: false,
+                                render: function (data, type, row, meta) {
+                                    return `(${data.slice(0, 3)}) ${data.slice(3, 6)} - ${data.slice(6)}`;
+                                }
+                            },
+                            {
+                                data: "user.createdDate",
+                                targets: 5,
+                                name: "@nameof(Aiesec.Model.Response.Administration.User.CreatedDate)",
+                                className: "text-center align-middle",
+                                render: function (data, type, row, meta) {
+                                    return `${$.format.date(data, "@_sharedLocalizer.DateFormat")}`;
+                                }
+                            },
+                            {
+                                data: "user.active",
+                                targets: 6,
+                                name: "@nameof(Aiesec.Model.Response.Administration.User.Active)",
+                                className: "text-center align-middle",
+                                render: function (data, type, row, meta) {
+                                    if (data == "True" || data == true) {
+                                        return `<span class="label label-success label-dot mr-2"></span>
+                                    <span class="font-weight-bold text-success">@_sharedLocalizer.Active</span>`
+                                    } else {
+                                        return `<span class="label label-danger label-dot mr-2"></span>
+                                    <span class="font-weight-bold text-danger">@_sharedLocalizer.Inactive</span>`
+                                    }
+                                }
+                            },
+                            {
+                                targets: -1,
+                                name: "@nameof(Aiesec.Model.Response.Administration.User.EncryptedId)",
+                                className: "text-center align-middle",
+                                autoWidth: true,
+                                orderable: false,
+                                render: function (data, type, row, meta) {
+                                    return `
+                            <a title="@_sharedLocalizer.Details" href="@Settings.Routes.User.Details/${row.user.encryptedId}" ajax-add="modal-lg" class="btn btn-sm btn-clean btn-icon btn-icon-md p-0 m-0"><i class="la la-info-circle"></i></a>
+                            <a title="@_sharedLocalizer.ActivateDeactivate" href="@Settings.Routes.User.ChangeActiveStatus/${row.user.encryptedId}" ajax-activate="true" target-id="${row.user.encryptedId}" class="btn btn-sm btn-clean btn-icon btn-icon-md p-0 m-0"><i class="la la-toggle-on"></i></a>
+                            <span class="dropdown">
+                                <a title="@_sharedLocalizer.Options" href="" class="btn btn-sm btn-clean btn-icon btn-icon-md" data-toggle="dropdown" aria-expanded="true">
+                                <i class="la la-ellipsis-h"></i>
+                                </a>
+                             <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" href="@Settings.Routes.User.Update/${row.user.encryptedId}" ajax-add="modal-lg"><i class="la la-edit"></i>@_sharedLocalizer.Update</a>
+                             </div>
+                            </span>
+                          `;
+                                }
+                            }
+                        ]
+                    });
+
+                    return datatable;
+                }
+        }
+
+        var DataTableMethods = {
+            DatePickerFrom: function () {
+                $("#search-datePickerFrom").datepicker({
+                    changeYear: "true",
+                    changeMonth: "true",
+                    dateFormat: "@_sharedLocalizer.DatePickerFormat"
+                });
+            },
+            DatePickerTo: function () {
+                $("#search-datePickerTo").datepicker({
+                    changeYear: "true",
+                    changeMonth: "true",
+                    dateFormat: "@_sharedLocalizer.DatePickerFormat"
+                });
+            },
+            DataTableSearch: function () {
+                $("#datatable-search").on("click", function (e) {
+                    e.preventDefault();
+                    $("#datatable").DataTable().ajax.reload();
+                });
+            },
+            DataTableReset: function () {
+                $("#datatable-reset").on("click", function (e) {
+                    e.preventDefault();
+                    $("#search-paremeters").trigger("reset");
+                    $("#datatable").DataTable().ajax.reload();
+                });
+            },
+            NotifyUserAdd: function () {
+                var _icon, _title;
+                if ("@(ViewBag.UserRegisterSuccessful)" == "True") {
+                    _icon = "success";
+                    _title = "@_sharedLocalizer.SuccUserInsert";
+                }
+                else if ("@(ViewBag.UserRegisterSuccessful)" == "False"){
+                    _icon = "error";
+                    _title = "@_sharedLocalizer.ErrUserInsert";
+                }
+                if("@(ViewBag.UserRegisterSuccessful)")
+                Swal.fire({
+                    position: "top-right",
+                    icon: _icon,
+                    title:_title,
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            },
+            Init: function () {
+                this.DatePickerFrom();
+                this.DatePickerTo();
+                this.DataTableSearch();
+                this.DataTableReset();
+                this.NotifyUserAdd();
+            }
+        }
+
+        $(document).ready(function () {
+            DataTable.Init();
+            DataTableMethods.Init();
+        });
+    </script>
+}

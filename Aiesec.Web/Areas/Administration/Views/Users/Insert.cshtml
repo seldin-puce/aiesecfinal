@@ -1,0 +1,599 @@
+﻿@{
+    Layout = "_Layout";
+    ViewData["Title"] = _sharedLocalizer.NewUser;
+}
+@section styles {
+    <link href="~/assets/css/pages/wizard/wizard-4.css" rel="stylesheet" type="text/css">
+}
+
+<!--begin::Subheader-->
+<div class="subheader py-2 py-lg-4 subheader-transparent" id="kt_subheader">
+    <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+        <!--begin::Details-->
+        <div class="d-flex align-items-center flex-wrap mr-2">
+            <!--begin::Title-->
+            <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">@_sharedLocalizer.NewUser</h5>
+            <!--end::Title-->
+            <!--begin::Separator-->
+            <div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-5 bg-gray-200"></div>
+            <!--end::Separator-->
+            <!--begin::Search Form-->
+            <div class="d-flex align-items-center" id="kt_subheader_search">
+                <span class="text-dark-50 font-weight-bold" id="kt_subheader_total">@_sharedLocalizer.EnterDetailsAndSubmit</span>
+            </div>
+            <!--end::Search Form-->
+        </div>
+        <!--end::Details-->
+        <!--begin::Toolbar-->
+        <div class="d-flex align-items-center">
+            <!--begin::Button-->
+            <a href="javascript:history.go(-1)" class="btn btn-default font-weight-bold btn-sm px-3 font-size-base">@_sharedLocalizer.Back</a>
+            <!--end::Button-->
+        </div>
+        <!--end::Toolbar-->
+    </div>
+</div>
+<!--end::Subheader-->
+<!--begin::Entry-->
+<div class="d-flex flex-column-fluid">
+    <!--begin::Container-->
+    <div class="container-fluid">
+        <!--begin::Card-->
+        <div class="card card-custom card-transparent">
+            <div class="card-body p-0">
+                <!--begin::Wizard-->
+                <div class="wizard wizard-4" id="kt_wizard" data-wizard-state="first" data-wizard-clickable="true">
+                    <!--begin::Wizard Nav-->
+                    <div class="wizard-nav">
+                        <div class="wizard-steps">
+                            <div class="wizard-step" data-wizard-type="step" data-wizard-state="current">
+                                <div class="wizard-wrapper">
+                                    <div class="wizard-number">1</div>
+                                    <div class="wizard-label">
+                                        <div class="wizard-title">@_sharedLocalizer.ProfileInfo</div>
+                                        <div class="wizard-desc">@_sharedLocalizer.UsersPersonalInfo</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="wizard-step" data-wizard-type="step" data-wizard-state="pending">
+                                <div class="wizard-wrapper">
+                                    <div class="wizard-number">2</div>
+                                    <div class="wizard-label">
+                                        <div class="wizard-title">@_sharedLocalizer.AccountInfo</div>
+                                        <div class="wizard-desc">@_sharedLocalizer.UsersAccountSettings</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="wizard-step" data-wizard-type="step" data-wizard-state="pending">
+                                <div class="wizard-wrapper">
+                                    <div class="wizard-number">3</div>
+                                    <div class="wizard-label">
+                                        <div class="wizard-title">@_sharedLocalizer.AiesecStatus</div>
+                                        <div class="wizard-desc">@_sharedLocalizer.UsersAiesecStatus</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="wizard-step" data-wizard-type="step" data-wizard-state="pending">
+                                <div class="wizard-wrapper">
+                                    <div class="wizard-number">4</div>
+                                    <div class="wizard-label">
+                                        <div class="wizard-title">@_sharedLocalizer.Submission</div>
+                                        <div class="wizard-desc">@_sharedLocalizer.ReviewAndSubmit</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end::Wizard Nav-->
+                    <!--begin::Card-->
+                    <div class="card card-custom card-shadowless rounded-top-0">
+                        <!--begin::Body-->
+                        <div class="card-body p-0">
+                            <div class="row justify-content-center py-8 px-8 py-lg-15 px-lg-10">
+                                <div class="col-xl-12 col-xxl-10">
+                                    <!--begin::Wizard Form-->
+                                    <form asp-area="Administration" asp-controller="Users" asp-action="RegisterUser" method="post" class="form fv-plugins-bootstrap fv-plugins-framework" id="kt_form">
+                                        <div class="row justify-content-center">
+                                            <div class="col-xl-12">
+                                                <!--begin::Wizard Step 1-->
+                                                <div class="my-5 step" data-wizard-type="step-content" data-wizard-state="current">
+                                                    <h5 class="text-dark font-weight-bold mb-10">User's Profile Details:</h5>
+                                                    <!--begin::Group-->
+                                                    <div class="form-group row fv-plugins-icon-container">
+                                                        <label class="col-xl-12 col-lg-3 col-form-label">@_sharedLocalizer.FirstName</label>
+                                                        <div class="col-lg-9 col-xl-12">
+                                                            <input class="form-control form-control-solid form-control-lg" name="profile.firstname" type="text"  autocomplete="off">
+                                                            <div class="fv-plugins-message-container"></div>
+                                                        </div>
+                                                    </div>
+                                                    <!--end::Group-->
+                                                    <!--begin::Group-->
+                                                    <div class="form-group row fv-plugins-icon-container">
+                                                        <label class="col-xl-12 col-lg-3 col-form-label">@_sharedLocalizer.LastName</label>
+                                                        <div class="col-lg-9 col-xl-12">
+                                                            <input class="form-control form-control-solid form-control-lg" name="profile.lastname" type="text"  autocomplete="off">
+                                                            <div class="fv-plugins-message-container"></div>
+                                                        </div>
+                                                    </div>
+                                                    <!--end::Group-->
+                                                    <!--begin::Group-->
+                                                    <div class="form-group row fv-plugins-icon-container">
+                                                        <label class="col-xl-12 col-lg-3 col-form-label">@_sharedLocalizer.Birthdate</label>
+                                                        <div class="col-lg-9 col-xl-12">
+                                                            <input id="birthdate" class="form-control form-control-solid form-control-lg" name="profile.birthdate" type="text" value="" autocomplete="off">
+                                                            <div class="fv-plugins-message-container"></div>
+                                                        </div>
+                                                    </div>
+                                                    <!--end::Group-->
+                                                    <!--begin::Group-->
+                                                    <div class="form-group row fv-plugins-icon-container">
+                                                        <label class="col-xl-12 col-lg-3 col-form-label">@_sharedLocalizer.Gender</label>
+                                                        <div class="col-lg-9 col-xl-12">
+                                                            <select class="form-control form-control-lg form-control-solid" name="profile.gender" asp-items="@(await _selectList.Genders())"></select>
+                                                            <div class="fv-plugins-message-container"></div>
+                                                        </div>
+                                                    </div>
+                                                    <!--end::Group-->
+                                                    <!--begin::Group-->
+                                                    <div class="form-group row fv-plugins-icon-container">
+                                                        <label class="col-xl-12 col-lg-3 col-form-label">@_sharedLocalizer.Address</label>
+                                                        <div class="col-lg-9 col-xl-12">
+                                                            <input class="form-control form-control-solid form-control-lg" name="profile.address" type="text"  autocomplete="off">
+                                                            <div class="fv-plugins-message-container"></div>
+                                                        </div>
+                                                    </div>
+                                                    <!--end::Group-->
+                                                    <!--begin::Group-->
+                                                    <div class="form-group row fv-plugins-icon-container">
+                                                        <label class="col-xl-12 col-lg-3 col-form-label">@_sharedLocalizer.City</label>
+                                                        <div class="col-lg-9 col-xl-12">
+                                                            <select class="form-control form-control-lg form-control-solid" name="profile.cityId" asp-items="@(await _selectList.Cities())"></select>
+                                                            <div class="fv-plugins-message-container"></div>
+                                                        </div>
+                                                    </div>
+                                                    <!--end::Group-->
+                                                </div>
+                                                <!--end::Wizard Step 1-->
+                                                <!--begin::Wizard Step 2-->
+                                                <div class="my-5 step" data-wizard-type="step-content">
+                                                    <h5 class="text-dark font-weight-bold mb-10 mt-5">User's Account Details</h5>
+                                                    <!--begin::Group-->
+                                                    <div class="form-group row fv-plugins-icon-container">
+                                                        <label class="col-xl-12 col-lg-3 col-md-3 col-form-label">@_sharedLocalizer.UserName</label>
+                                                        <div class="col-lg-9 col-xl-12">
+                                                            <input class="form-control form-control-solid form-control-lg" name="user.username" type="text" autocomplete="off">
+                                                            <div class="fv-plugins-message-container"></div>
+                                                        </div>
+                                                    </div>
+                                                    <!--end::Group-->
+                                                    <!--begin::Group-->
+                                                    <div class="form-group row fv-plugins-icon-container">
+                                                        <label class="col-xl-12 col-lg-3 col-md-3 col-form-label">@_sharedLocalizer.Email</label>
+                                                        <div class="col-lg-9 col-xl-12">
+                                                            <input class="form-control form-control-solid form-control-lg" name="user.email" type="email" autocomplete="off">
+                                                            <div class="fv-plugins-message-container"></div>
+                                                        </div>
+                                                    </div>
+                                                    <!--end::Group-->
+                                                    <!--begin::Group-->
+                                                    <div class="form-group row fv-plugins-icon-container">
+                                                        <label class="col-xl-12 col-lg-3 col-md-3 col-form-label">@_sharedLocalizer.PhoneNumber</label>
+                                                        <div class="col-lg-9 col-xl-12">
+                                                            <input class="form-control form-control-solid form-control-lg" name="user.phoneNumber" type="text" autocomplete="off">
+                                                            <div class="fv-plugins-message-container"></div>
+                                                        </div>
+                                                    </div>
+                                                    <!--end::Group-->
+                                                    <!--begin::Group-->
+                                                    <div class="form-group row fv-plugins-icon-container">
+                                                        <label class="col-xl-12 col-lg-3 col-form-label">@_sharedLocalizer.Role</label>
+                                                        <div class="col-lg-9 col-xl-12">
+                                                            <select class="form-control form-control-lg form-control-solid" name="role" asp-items="@(await _selectList.Roles())"></select>
+                                                            <div class="fv-plugins-message-container"></div>
+                                                        </div>
+                                                    </div>
+                                                    <!--end::Group-->
+                                                    <!--begin::Group-->
+                                                    <div class="form-group row fv-plugins-icon-container">
+                                                        <label class="col-xl-9 col-lg-3 col-md-3 col-form-label">@_sharedLocalizer.NewPassword</label>
+                                                        <div class="input-group col-md-12 col-lg-12 col-xl-12">
+                                                            <input type="password" name="user.password" class="form-control form-control-solid form-control-lg ">
+                                                            <div class="input-group-append ">
+                                                                <button id="showPassword" class="btn btn-primary" type="button"><i class="fa fas fa-eye"></i></button>
+                                                                <button id="generatePassword" class="btn btn-primary rounded-right" type="button"><i class="fa fas fa-key"></i></button>
+                                                            </div>
+                                                            <div class="fv-plugins-message-container"></div>
+                                                        </div>
+                                                    </div>
+                                                    <!--end::Group-->
+                                                    <!--begin::Group-->
+                                                    <div class="form-group row fv-plugins-icon-container">
+                                                        <label class="col-xl-12 col-lg-3 col-md-3 col-form-label">@_sharedLocalizer.PasswordConfirm</label>
+                                                        <div class="col-lg-9 col-xl-12">
+                                                            <input class="form-control form-control-solid form-control-lg" name="user.confirmPassword" type="password" value="">
+                                                            <div class="fv-plugins-message-container"></div>
+                                                        </div>
+                                                    </div>
+                                                    <!--end::Group-->
+                                                </div>
+                                                <!--end::Wizard Step 2-->
+
+
+                                                @*ALLLAAA*@
+                                                <!--begin::Wizard Step 3-->
+                                                <div class="my-5 step" data-wizard-type="step-content">
+                                                    <h5 class="mb-10 font-weight-bold text-dark">Setup Your Address</h5>
+                                                    <!--begin::Group-->
+                                                    <div class="form-group fv-plugins-icon-container">
+                                                        <label>Address Line 1</label>
+                                                        <input type="text" class="form-control form-control-solid form-control-lg" name="address1" placeholder="Address Line 1" value="Address Line 1">
+                                                        <span class="form-text text-muted">Please enter your Address.</span>
+                                                        <div class="fv-plugins-message-container"></div>
+                                                    </div>
+                                                    <!--end::Group-->
+                                                    <!--begin::Group-->
+                                                    <div class="form-group">
+                                                        <label>Address Line 2</label>
+                                                        <input type="text" class="form-control form-control-solid form-control-lg" name="address2" placeholder="Address Line 2" value="Address Line 2">
+                                                        <span class="form-text text-muted">Please enter your Address.</span>
+                                                    </div>
+                                                    <!--begin::Row-->
+                                                    <div class="row">
+                                                        <div class="col-xl-6">
+                                                            <!--begin::Group-->
+                                                            <div class="form-group fv-plugins-icon-container">
+                                                                <label>Postcode</label>
+                                                                <input type="text" class="form-control form-control-solid form-control-lg" name="postcode" placeholder="Postcode" value="3000">
+                                                                <span class="form-text text-muted">Please enter your Postcode.</span>
+                                                                <div class="fv-plugins-message-container"></div>
+                                                            </div>
+                                                        </div>
+                                                        <!--end::Group-->
+                                                        <!--begin::Group-->
+                                                        <div class="col-xl-6">
+                                                            <div class="form-group fv-plugins-icon-container">
+                                                                <label>City</label>
+                                                                <input type="text" class="form-control form-control-solid form-control-lg" name="city" placeholder="City" value="Melbourne">
+                                                                <span class="form-text text-muted">Please enter your City.</span>
+                                                                <div class="fv-plugins-message-container"></div>
+                                                            </div>
+                                                        </div>
+                                                        <!--end::Group-->
+                                                    </div>
+                                                    <!--end::Row-->
+                                                    <!--begin::Row-->
+                                                    <div class="row">
+                                                        <div class="col-xl-6">
+                                                            <!--begin::Group-->
+                                                            <div class="form-group fv-plugins-icon-container">
+                                                                <label>State</label>
+                                                                <input type="text" class="form-control form-control-solid form-control-lg" name="state" placeholder="State" value="VIC">
+                                                                <span class="form-text text-muted">Please enter your State.</span>
+                                                                <div class="fv-plugins-message-container"></div>
+                                                            </div>
+                                                            <!--end::Group-->
+                                                        </div>
+                                                        <div class="col-xl-6">
+                                                            <!--begin::Group-->
+                                                            <div class="form-group fv-plugins-icon-container">
+                                                                <label>Country</label>
+                                                                <select name="country" class="form-control form-control-solid form-control-lg">
+                                                                    <option value="">Select</option>
+                                                                    <option value="AF">Afghanistan</option>
+
+                                                                </select>
+                                                                <div class="fv-plugins-message-container"></div>
+                                                            </div>
+                                                            <!--end::Group-->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--end::Wizard Step 3-->
+                                                <!--begin::Wizard Step 4-->
+                                                <div class="my-5 step" data-wizard-type="step-content">
+                                                    <h5 class="mb-10 font-weight-bold text-dark">Review your Details and Submit</h5>
+                                                    <!--begin::Item-->
+                                                    <div class="border-bottom mb-5 pb-5">
+                                                        <div class="font-weight-bolder mb-3">Your Account Details:</div>
+                                                        <div class="line-height-xl">
+                                                            John Wick
+                                                            <br>Phone: +61412345678
+                                                            <br>Email: johnwick@reeves.com
+                                                        </div>
+                                                    </div>
+                                                    <!--end::Item-->
+                                                    <!--begin::Item-->
+                                                    <div class="border-bottom mb-5 pb-5">
+                                                        <div class="font-weight-bolder mb-3">Your Address Details:</div>
+                                                        <div class="line-height-xl">
+                                                            Address Line 1
+                                                            <br>Address Line 2
+                                                            <br>Melbourne 3000, VIC, Australia
+                                                        </div>
+                                                    </div>
+                                                    <!--end::Item-->
+                                                    <!--begin::Item-->
+                                                    <div>
+                                                        <div class="font-weight-bolder">Payment Details:</div>
+                                                        <div class="line-height-xl">
+                                                            Card Number: xxxx xxxx xxxx 1111
+                                                            <br>Card Name: John Wick
+                                                            <br>Card Expiry: 01/21
+                                                        </div>
+                                                    </div>
+                                                    <!--end::Item-->
+                                                </div>
+                                                <!--end::Wizard Step 4-->
+                                                <!--begin::Wizard Actions-->
+                                                <div class="d-flex justify-content-between border-top pt-10 mt-15">
+                                                    <div class="mr-2">
+                                                        <button id="prev-step" class="btn btn-light-primary font-weight-bolder px-9 py-4" data-wizard-type="action-prev">Previous</button>
+                                                    </div>
+                                                    <div>
+                                                        <button type="submit" class="btn btn-success font-weight-bolder px-9 py-4" data-wizard-type="action-submit">Submit</button>
+                                                        <button id="next-step" class="btn btn-primary font-weight-bolder px-9 py-4" data-wizard-type="action-next">Next</button>
+                                                    </div>
+                                                </div>
+                                                <!--end::Wizard Actions-->
+                                            </div>
+                                        </div>
+                                        <div></div><div></div><div></div>
+                                    </form>
+                                    <!--end::Wizard Form-->
+                                </div>
+                            </div>
+                        </div>
+                        <!--end::Body-->
+                    </div>
+                    <!--end::Card-->
+                </div>
+                <!--end::Wizard-->
+            </div>
+        </div>
+        <!--end::Card-->
+    </div>
+    <!--end::Container-->
+</div>
+<!--end::Entry-->
+
+@section scripts {
+    <script src="~/assets/js/pages/custom/user/add-user.js"></script>
+    <script src="~/assets/js/pages/custom/passwordgen/passwordGenerator.js"></script>
+}
+<script>
+    "use strict";
+
+    // Class Definition
+    var KTAddUser = function () {
+        // Private Variables
+        var _wizardEl;
+        var _formEl;
+        var _wizard;
+        var _avatar;
+        var _validations = [];
+
+        // Private Functions
+        var _initWizard = function () {
+            // Initialize form wizard
+            _wizard = new KTWizard(_wizardEl, {
+                startStep: 1, // initial active step number
+                clickableSteps: true  // allow step clicking
+            });
+
+            // Validation before going to next page
+            _wizard.on('beforeNext', function (wizard) {
+                _validations[wizard.getStep() - 1].validate().then(function (status) {
+                    if (status == 'Valid') {
+                        _wizard.goNext();
+                        KTUtil.scrollTop();
+                    } else {
+                        Swal.fire({
+                            icon: "error",
+                            buttonsStyling: false,
+                            html: "@_validationErrors.SorryTryAgain",
+                            confirmButtonText: "@_sharedLocalizer.Ok",
+                            customClass: {
+                                confirmButton: "btn font-weight-bold btn-light"
+                            }
+                        }).then(function () {
+                            KTUtil.scrollTop();
+                        });
+                    }
+                });
+
+                _wizard.stop();  // Don't go to the next step
+            });
+
+            // Change Event
+            _wizard.on('change', function (wizard) {
+                KTUtil.scrollTop();
+            });
+        }
+
+        var _initValidations = function () {
+            // Init form validation rules. For more info check the FormValidation plugin's official documentation:https://formvalidation.io/
+
+            // Validation Rules For Step 1
+            _validations.push(FormValidation.formValidation(
+                _formEl,
+                {
+                    fields: {
+                        "profile.firstname": {
+                            validators: {
+                                notEmpty: {
+                                    message: "@_validationErrors.ErrNoFirstName"
+                                }
+                            }
+                        },
+                        "profile.lastname": {
+                            validators: {
+                                notEmpty: {
+                                    message: "@_validationErrors.ErrNoLastName"
+                                }
+                            }
+                        },
+                        "profile.birthdate": {
+                            validators: {
+                                notEmpty: {
+                                    message: "@_validationErrors.ErrNoBirthDate"
+                                }
+                            }
+                        },
+                        "profile.gender": {
+                            validators: {
+                                notEmpty: {
+                                    message: "@_validationErrors.ErrNoRole"
+                                }
+                            }
+                        },
+                         "profile.address": {
+                            validators: {
+                                notEmpty: {
+                                    message: "@_validationErrors.ErrNoAddress"
+                                }
+                            }
+                        },
+                          "profile.cityId": {
+                            validators: {
+                                notEmpty: {
+                                    message: "@_validationErrors.ErrNoCity"
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        trigger: new FormValidation.plugins.Trigger(),
+                        bootstrap: new FormValidation.plugins.Bootstrap()
+                    }
+                }
+            ));
+
+            _validations.push(FormValidation.formValidation(
+                _formEl,
+                {
+                    fields: {
+                        // Step 2
+                        "user.username": {
+                            validators: {
+                                notEmpty: {
+                                    message: "@_validationErrors.ErrNoUsername"
+                                },
+                                regexp: {
+                                    regexp: "[a-z]{3,}_[a-z]{3,}",
+                                    message: "@_validationErrors.ErrUsernamePolicy",
+                                }
+                            }
+                        }                       
+                    },
+                    plugins: {
+                        trigger: new FormValidation.plugins.Trigger(),
+                        bootstrap: new FormValidation.plugins.Bootstrap()
+                    }
+                }
+            ));
+
+            _validations.push(FormValidation.formValidation(
+                _formEl,
+                {
+                    fields: {
+                        address1: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Address is required'
+                                }
+                            }
+                        },
+                        postcode: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Postcode is required'
+                                }
+                            }
+                        },
+                        city: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'City is required'
+                                }
+                            }
+                        },
+                        state: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'state is required'
+                                }
+                            }
+                        },
+                        country: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Country is required'
+                                }
+                            }
+                        },
+                    },
+                    plugins: {
+                        trigger: new FormValidation.plugins.Trigger(),
+                        bootstrap: new FormValidation.plugins.Bootstrap()
+                    }
+                }
+            ));
+        }
+
+        var _initAvatar = function () {
+            _avatar = new KTImageInput('kt_user_add_avatar');
+        }
+
+        return {
+            // public functions
+            init: function () {
+                _wizardEl = KTUtil.getById('kt_wizard');
+                _formEl = KTUtil.getById('kt_form');
+
+                _initWizard();
+                _initValidations();
+                _initAvatar();
+            }
+        };
+    }();
+    var Events = {
+        GeneratePassword: function () {
+            $("#generatePassword").on("click", function (e) {
+                let generatedPassword = Password.Generate();
+                $("input[name='user.password']").val(generatedPassword);
+                $("input[name='user.confirmPassword']").val(generatedPassword);
+            });
+        },
+        ShowPassword: function () {
+            $('#showPassword').on('click', function (e) {
+                e.preventDefault();
+                $(this).find("i").toggleClass("far fa-eye far fa-eye-slash");
+                $("input[name='user.password']").attr('type',
+                    $(this).is(function () { return $("input[name='user.password']").attr('type') == 'password' })
+                        ? 'text'
+                        : 'password');
+                $("input[name='user.confirmPassword']").attr('type',
+                    $(this).is(function () { return $("input[name='user.confirmPassword']").attr('type') == 'password' })
+                        ? 'text'
+                        : 'password');
+            });
+        },
+        InitDatePicker: function () {
+             $("#birthdate").datepicker({
+            changeYear: "true",
+            changeMonth: "true",
+            dateFormat: "@_sharedLocalizer.DatePickerFormat"
+        });
+        },
+        init: function () {
+            this.GeneratePassword();
+            this.ShowPassword();
+            this.InitDatePicker();
+        }
+    }
+
+    $(document).ready(function () {
+        KTAddUser.init();
+        Events.init();
+    });
+</script>
